@@ -1,6 +1,6 @@
 {
-    "name": "car_rental_app_firebase",
-    "short_name": "car_rental_app_firebase",
+    "name": "car_rental_app_firebase_firebase",
+    "short_name": "car_rental_app_firebase_firebase",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

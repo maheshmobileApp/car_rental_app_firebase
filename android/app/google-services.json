@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:136355341868:android:a42c27142aab589137d389",
+        "mobilesdk_app_id": "1:136355341868:android:967c4414597bd09637d389",
         "android_client_info": {
-          "package_name": "com.carrentalapp.app"
+          "package_name": "com.carrental.car_rental_app_firebase"
         }
       },
       "oauth_client": [],

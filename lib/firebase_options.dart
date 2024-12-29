@@ -17,13 +17,19 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -46,30 +52,12 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBNBf8vGNWkvMH0tV9OcAtmXrXQc71bc2M',
-    appId: '1:136355341868:web:49a8a07e35a48abf37d389',
-    messagingSenderId: '136355341868',
-    projectId: 'car-rental-app-167e8',
-    authDomain: 'car-rental-app-167e8.firebaseapp.com',
-    storageBucket: 'car-rental-app-167e8.firebasestorage.app',
-    measurementId: 'G-ZW65ZC4HGB',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCJklKOApY7JJQqtd6HBszVaG3qSFFRSkU',
-    appId: '1:136355341868:android:a42c27142aab589137d389',
+    appId: '1:136355341868:android:967c4414597bd09637d389',
     messagingSenderId: '136355341868',
     projectId: 'car-rental-app-167e8',
     storageBucket: 'car-rental-app-167e8.firebasestorage.app',
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDG1tGF0xbNeiSOgd43VZLYD-Kdl0yNN3E',
-    appId: '1:136355341868:ios:952a8d87d6e12bed37d389',
-    messagingSenderId: '136355341868',
-    projectId: 'car-rental-app-167e8',
-    storageBucket: 'car-rental-app-167e8.firebasestorage.app',
-    iosBundleId: 'com.example.carRentalAppFirebase',
-  );
 }
