@@ -4,6 +4,7 @@ import 'package:car_rental_app_firebase/routes/routes_constants.dart';
 import 'package:car_rental_app_firebase/services/navigation_services.dart';
 import 'package:car_rental_app_firebase/utils/local_storage_constants.dart';
 import 'package:car_rental_app_firebase/widget/logo_widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -36,13 +37,21 @@ class _SplashScrenState extends State<SplashScren> {
      otherwise user navigate to home 
      */
     await Future.delayed(const Duration(seconds: splashDuration));
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      if (user == null) {
+        NavigationServices().replaceAll(RoutesConstants.loginScreen);
+      } else {
+        NavigationServices().replaceAll(RoutesConstants.homeScreen);
+      }
+    });
+
+    /*  final SharedPreferences prefs = await SharedPreferences.getInstance();
     final userID = prefs.getString(LocalStorageConstants.userId) ?? "";
     if (userID.isEmpty) {
       NavigationServices().replaceAll(RoutesConstants.loginScreen);
     } else {
       NavigationServices().replaceAll(RoutesConstants.homeScreen);
-    }
+    }*/
 
     // prefs.clear();
   }

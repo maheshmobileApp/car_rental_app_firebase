@@ -18,4 +18,6 @@ class SignUpRequestModel {
     data['password'] = this.password;
     return data;
   }
+
+  
 }

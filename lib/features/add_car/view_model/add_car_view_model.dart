@@ -1,6 +1,7 @@
 import 'package:car_rental_app_firebase/features/add_car/model/addcar_reponse_model.dart';
 import 'package:car_rental_app_firebase/features/add_car/model/addcar_request_model.dart';
 import 'package:car_rental_app_firebase/features/add_car/repository/add_car_repository.dart';
+import 'package:car_rental_app_firebase/services/firebase_response_model.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -62,13 +63,24 @@ class AddCarViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<AddCarResponseModel> addCar(AddCarRequestModel requestModel) async {
+  Future<FirebaseResponseModel> addCar(AddCarRequestModel requestModel) async {
+    var addCarPayload = requestModel.toJson();
+    addCarPayload['image'] = await uploadImage(selectedImage!);
     try {
-      final response = await repository.addCar(requestModel.toJson());
-      final responseModel = AddCarResponseModel.fromJson(response.data);
-      return responseModel;
+      final response = await repository.addCar(addCarPayload);
+
+      return response;
     } catch (e) {
-      return AddCarResponseModel(message: e.toString());
+      return FirebaseResponseModel(
+          isSuccess: false, message: e.toString(), data: null);
     }
   }
+
+  Future<String> uploadImage(XFile image) async {
+    final response = await repository.uploadImage(image);
+    return response.data;
+  }
 }
+/*
+addCarPayload
+ */

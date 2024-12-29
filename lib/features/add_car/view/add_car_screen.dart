@@ -199,7 +199,6 @@ class _AddCarScreenState extends State<AddCarScreen> {
     LoaderWidget.showLoader();
     final response = await model.addCar(addCarRequestModel);
     LoaderWidget.hideLoader();
-
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(response.message ?? "")));
     //Call the getCars method of the CarsViewModel

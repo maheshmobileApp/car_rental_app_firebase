@@ -12,14 +12,20 @@ class CarsViewModel extends ChangeNotifier {
   //Repos -> abstract -> imple
 
   Future<void> getCars() async {
+
     try {
       LoaderWidget.showLoader();
       final response = await repository.getCarsList();
       LoaderWidget.hideLoader();
-      if (response.statusCode == 200) {
-        final carsModel = CarsModelData.fromJson(response.data);
-        cars = carsModel.cars ?? [];
+      for (var doc in response.data) {
+        // Each document's data
+        Cars car = Cars.fromJson(doc.data() as Map<String, dynamic>);
+        cars.add(car);
       }
+      // if (response.statusCode == 200) {
+      //   final carsModel = CarsModelData.fromJson(response.data);
+      //   cars = carsModel.cars ?? [];
+      // }
     } catch (e) {
       LoaderWidget.hideLoader();
       cars = [];

@@ -8,4 +8,9 @@ class SignUpRepositoryImplFirebase extends SignUpRepository {
   Future<FirebaseResponseModel> signUp(payload) async {
     return await _firebaseServies.signUpMethod(payload);
   }
+  
+  @override
+  Future<FirebaseResponseModel> saveTheUserData(payload) async {
+   return await _firebaseServies.saveTheUserData(payload);
+  }
 }

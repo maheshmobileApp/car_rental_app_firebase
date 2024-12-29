@@ -25,17 +25,17 @@ class Cars {
   String? sId;
   String? name;
   String? brand;
-  int? year;
+  dynamic? year;
   String? fuelType;
   String? transmission;
   String? address;
-  int? pricePerDay;
+  dynamic? pricePerDay;
   String? description;
   String? image;
   bool? available;
   String? userId;
   List<String>? favoriteBy;
-  int? iV;
+  dynamic? iV;
 
   Cars(
       {this.sId,
@@ -54,7 +54,7 @@ class Cars {
       this.iV});
 
   Cars.fromJson(Map<String, dynamic> json) {
-    sId = json['_id'];
+    // sId = json['_id'];
     name = json['name'];
     brand = json['brand'];
     year = json['year'];
@@ -64,10 +64,10 @@ class Cars {
     pricePerDay = json['pricePerDay'];
     description = json['description'];
     image = json['image'];
-    available = json['available'];
-    userId = json['userId'];
-    favoriteBy = json['favoriteBy'].cast<String>();
-    iV = json['__v'];
+    // available = json['available'];
+    // userId = json['userId'];
+    // favoriteBy = json['favoriteBy'].cast<String>();
+    // iV = json['__v'];
   }
 
   Map<String, dynamic> toJson() {

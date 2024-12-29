@@ -109,12 +109,10 @@ class _LoginScreenState extends State<LoginScreen> {
     if (response.isSuccess == true) {
       //
       NavigationServices().replaceAll(RoutesConstants.homeScreen);
-    } else {
-      //Show alert Message
-      ScaffoldMessenger.of(context)
-        ..hideCurrentSnackBar()
-        ..showSnackBar(SnackBar(content: Text(response.message)));
     }
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(SnackBar(content: Text(response.message)));
   }
 }
 
